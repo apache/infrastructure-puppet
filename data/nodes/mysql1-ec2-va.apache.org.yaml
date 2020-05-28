@@ -3,6 +3,30 @@ classes:
   - datadog_agent::integrations::mysql
   - mysql_asf::backup
   - mysql::server
+  - rsync::server
+
+
+rsync::package_ensure:        'latest'
+rsync::server::use_xinetd:    false
+rsync::server::uid:           'root'
+rsync::server::gid:           'root'
+
+rsync::server::module:
+  dbs:
+    path: '/x1/db_dump/mysql',
+    hosts_allow: '3.210.148.126',
+    auth_users: 'dbtx',
+    secrets_file: '/etc/rsyncd.secrets',
+    incoming_chmod: false,
+    outgoing_chmod: false,
+    read_only: 'no';
+
+file:
+  '/etc/rsyncd.secrets':
+    content: "%{resources::rsync_secrets}"
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
 
 mysql_asf::backup::rsync_offsite: 'true'
 
