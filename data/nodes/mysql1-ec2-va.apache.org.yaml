@@ -14,6 +14,7 @@ rsync::server::gid:           'root'
 rsync::server::module:
   dbs:
     path: '/x1/db_dump/mysql',
+    log_file: '/x1/rsync.log',
     hosts_allow: '3.210.148.126',
     auth_users: 'dbtx',
     secrets_file: '/etc/rsyncd.secrets',
