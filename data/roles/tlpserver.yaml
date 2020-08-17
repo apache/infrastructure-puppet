@@ -1922,6 +1922,42 @@ vhosts_asf::vhosts::vhosts:
     custom_fragment: |
       Redirect permanent / http://spamassassin.apache.org/
 
+  spamassassing.org-ssl:
+    vhost_name: '*'
+    port: 443
+    ssl: true
+    servername: 'www.spamassassin.org'
+    docroot: '/www/spamassassin.apache.org'
+    manage_docroot: false
+    serveraliases:
+      - 'spamassassin.org'
+      - 'au.spamassassin.org'
+      - 'au2.spamassassin.org'
+      - 'eu.spamassassin.org'
+      - 'eu2.spamassassin.org'
+      - 'eu3.spamassassin.org'
+      - 'ie.spamassassin.org'
+      - 'news.spamassassin.org'
+      - 'uk.spamassassin.org'
+      - 'us.spamassassin.org'
+      - 'useast.spamassassin.org'
+      - 'uswest.spamassassin.org'
+      - 'www.au.spamassassin.org'
+      - 'www.au2.spamassassin.org'
+      - 'www.eu.spamassassin.org'
+      - 'www.eu2.spamassassin.org'
+      - 'www.eu3.spamassassin.org'
+      - 'www.ie.spamassassin.org'
+      - 'www.uk.spamassassin.org'
+      - 'www.us.spamassassin.org'
+      - 'www.useast.spamassassin.org'
+      - 'www.uswest.spamassassin.org'
+    serveradmin: 'users@infra.apache.org'
+    access_log_file: '/x1/logs/weblog.log'
+    error_log_file: '/x1/logs/errorlog.log'
+    custom_fragment: |
+      Redirect permanent / https://spamassassin.apache.org/
+
   svn.collab.net:
     vhost_name: '*'
     port: 80
